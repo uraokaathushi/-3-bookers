@@ -1,11 +1,12 @@
-<h1>Users info</h1>
-<h1>New book</h1>
-  <%= form_with model: @book do |f|%>
-  <h4>Title</h4>
-  <%= f.text_field :title%>
-  <h4>Opinion</h4>
-  <%= f.text_area :body%>
 
-  <%= f.submit 'Create Book' %>
+<%= render "books/list", book: @book, user: @user %>
 
-<% end %>
+<h1>Books</h1>
+ <table>
+ <thead>
+ <tr>
+ <th>Title</th>
+ <th>Opinion</th>
+ </tr>
+ </thead>
+

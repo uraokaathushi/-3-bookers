@@ -12,7 +12,19 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
+    @user = User.find(current_user.id)
+    @users = User.all
   end
+
+  def update
+    @user = User.find_by(params[:id])
+     if @user.update(user_params)
+    redirect_to user_path(@user), notice: "User was successfully updated."
+  else
+    render :edit
+  end
+end
 
   def show
 
@@ -21,7 +33,8 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :user_id)
+    params.require(:book).permit(:title, :body, :user_id, :image)
   end
 
 end
+
