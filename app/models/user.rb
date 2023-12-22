@@ -1,10 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+    before_action :is_matching_login_user, only: [:edit, :update]
   has_one_attached :profile_image
+  has_many :book
   has_many :post_image, dependent: :destroy
+
+
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample1.jpg')
