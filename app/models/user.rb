@@ -4,18 +4,19 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
-      
+
+
     validates :name, uniqueness: true, length: { in: 2..20 }
     validates :introduction, length: { maximum: 50 }
 
   has_one_attached :profile_image
-  has_many :book
-  has_many :post_image, dependent: :destroy
+  has_many :books, dependent: :destroy, 
 
-
-
-  def get_profile_image(width, height)
+   def my_books
+   self.books 
+   end
+    
+    def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample1.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')

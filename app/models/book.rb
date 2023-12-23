@@ -5,6 +5,7 @@ class Book < ApplicationRecord
    validates :body, presence: true, length: { maximum: 200 }
 
 
+
    def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample1.jpg')
