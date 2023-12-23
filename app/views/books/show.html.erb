@@ -29,10 +29,11 @@
          <% end %></td>
 
          <td><% if @book.user == current_user %>
-        <%= link_to book_path(@book), method: :delete do %>
+        <%= link_to book_path(@book), method: :delete, data: { confirm: '本当に削除しますか？' } do %>
          <button class="btn btn-danger" >Destroy</button>
          <% end %>
-         <% end %></td>
+         <% end %>
+         </td>
       </tr>
       </tbody>
     </table>
