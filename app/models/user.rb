@@ -4,8 +4,11 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+      
+    validates :name, uniqueness: true, length: { in: 2..20 }
+    validates :introduction, length: { maximum: 50 }
 
-    before_action :is_matching_login_user, only: [:edit, :update]
   has_one_attached :profile_image
   has_many :book
   has_many :post_image, dependent: :destroy

@@ -6,24 +6,33 @@
  <div class="container">
   <div class="row">
    <div class="col-md-3">
-　　　<%= render "list", book: @book, user: @user %>
-　　</div>
+      <%= render "list", book: @book, user: @user %>
+    </div>
 
-　   <div class="col-md-8 offset-md-1">
+     <div class="col-md-8 offset-md-1">
     <h2>Book detail</h2>
     <table class="table">
       <tbody>
       <tr>
-      <td><%= image_tag @book.user.get_profile_image(100, 100) %>
-          <%= link_to @user.name, user_path %></td>
+       <td>
+       <a><%= image_tag @book.user.get_profile_image(100, 100) %>
+          <br> <%= link_to @user.name, user_path %>
+       </a>
+       </td>
+
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
       <td><% if @book.user == current_user %>
-        <%= link_to "edit", edit_book_path(@book) %>
-        <% end %></td>
-      <td><% if @book.user == current_user %>
-    　　<%= link_to "destroy", book_path(@book), method: :delete %>
-    　　<% end %></td>
+        <%= link_to edit_book_path(@book) do %>
+         <button class="btn btn-success" >Edit</button>
+         <% end %>
+         <% end %></td>
+
+         <td><% if @book.user == current_user %>
+        <%= link_to book_path(@book), method: :delete do %>
+         <button class="btn btn-danger" >Destroy</button>
+         <% end %>
+         <% end %></td>
       </tr>
       </tbody>
     </table>

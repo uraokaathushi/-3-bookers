@@ -18,11 +18,13 @@
      </tbody>
     </table>
      <div class="row">
-      <a class= "bth bth-outline-secondary bth-block">
-     <i class="fa-solid fa-user-gear"></i>
-      <%= link_to "edit", edit_user_path(@user) %>
-     </div></a>
-　　
+         <li button type="button" class="btn btn-outline-secondary btn-block">
+        <%= link_to edit_user_path(@user), class: "nav-link text-secondary" do %>
+          <i class="fas fa-user-cog"></i>
+         <% end %>
+         </li>
+     </div>
+
     <h2 class="mt-3">New book</h2>
      <%= form_with model: Book.new do |f|%>
     <div class="form-group">
@@ -35,6 +37,6 @@
     </div>
 
     <div class="form-group">
-    <th><%= f.submit 'Create Book' %></th>
+     <button class="btn btn-success" >Create Book</button>
    </div>
  <% end %>
