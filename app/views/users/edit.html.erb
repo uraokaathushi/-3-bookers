@@ -10,7 +10,6 @@
        <div class="container">
         <div class="row">
          <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-         <form class="float-left">
        <h2>User info</h2>
       <%= form_with model: @user, url: user_path(@user), method: :patch, local: true do |f| %>
     <div class="form-group row">
@@ -41,10 +40,9 @@
         </div>
 
        <div class="form-group">
-       <button class="btn btn-secondary">Update User</button>
+       <%= f.submit "Update User", class: "btn btn-secondary" %>
        </div>
       <% end %>
-    </form>
    </div>
   </div>
  </div>

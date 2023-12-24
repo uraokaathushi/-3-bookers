@@ -5,3 +5,4 @@ class RegistrationsController < ApplicationController
     user_path(resource)
   end
   end
+end

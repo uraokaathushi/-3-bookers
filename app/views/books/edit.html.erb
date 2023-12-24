@@ -35,9 +35,9 @@
        <button class="btn btn-success">Update Book</button>
        </div>
          <tr>
-        <a><%= link_to "show", book_path %></a>
+        <a><%= link_to "Show", book_path(@book) %></a>
         <a>|</a>
-        <a><%= link_to "back", request.referer %></a>
+        <a><%= link_to "Back", books_path %></a>
          </tr>
      <% end %>
      </form>
