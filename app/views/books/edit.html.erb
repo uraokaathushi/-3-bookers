@@ -10,7 +10,6 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <form class="float-left">
    <h2>Editing Book</h2>
     <%= form_with model: @book, url: book_path(@book), method: :patch, local: true do |f| %>
     <div class="form-group row">
@@ -32,16 +31,15 @@
         </div>
 
        <div class="form-group">
-       <button class="btn btn-success">Update Book</button>
+        <%= f.submit "Update Book", class: "btn btn-success" %>
        </div>
          <tr>
-        <a><%= link_to "Show", book_path(@book) %></a>
-        <a>|</a>
-        <a><%= link_to "Back", books_path %></a>
+         <%= link_to "Show", book_path(@book) %>
+          |
+         <%= link_to "Back", books_path %>
          </tr>
      <% end %>
-     </form>
-   </div>
+    </div>
   </div>
  </div>
 
